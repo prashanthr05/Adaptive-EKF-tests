@@ -3,10 +3,14 @@ function dzdt = springprocess(z,t,p)
 k = p.k;
 m = p.m;
 omega = p.omega;
+Amp = p.Amp;
 
 dx = z(2);
-dv = (-k*z(1) + 10*sin(omega*t))/m;
+% dv = (-k*z(1)/m); %no input
+dv = (-k*z(1) + Amp*sin(omega*t))/m; %sinusoidal input
+% dv = (-k*z(1) + Amp*t*t)/m;          %ramp input
+% dv = (-k*z(1) + Amp*t)/m;            %step input
 
-% dv = (-k*z(1))/m;
+
 dzdt = [dx;dv];
 end
