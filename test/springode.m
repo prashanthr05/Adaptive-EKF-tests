@@ -14,9 +14,9 @@ param.k = 1;
 param.omega = 0; % if omega is a non-zero value, it's a forced system
 param.Amp = 0; %Amplitude for forced input
 
-Ts = 0.001;
+Ts = 0.01;
 % Initial conditions for the ODE solver
-tspan = 0:Ts:10; %[0 10];
+tspan = 0:Ts:2; %[0 10];
 z0 = [2 0];
 %% Use ODE solver to integrate the system through time
 springmass = @(t,z)springprocess(z,t,param);
@@ -24,10 +24,13 @@ springmass = @(t,z)springprocess(z,t,param);
 [t,z] = ode45(springmass,tspan,z0);
 
 %% Obtaining a noisy velocity measurement of known variance for the measurement model
-variance = 0.50;
+variance = 5.220;
 wn = sqrt(variance).*randn(size(z(:,2))); % white noise with a given variance
 
 y = z(:,2) + wn;
+
+dataFolder = sprintf('./robotData/velocityMeasurement/');
+save(strcat(dataFolder,'measurement1.mat'),'t','y','variance');
 
 %% Initializing the filter params
 n = 2; %state dimension
@@ -39,6 +42,7 @@ B_cont = [0; 1/param.m];           % Input effect matrix
 C_cont = [0 1]; 
 
 %Ts= 0.001
+%Discretize the CT-LTI system
 A = expm(A_cont*Ts);
 B = inv(A_cont)*(A - eye(2))*B_cont;
 C = C_cont;
