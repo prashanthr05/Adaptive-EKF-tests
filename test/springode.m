@@ -5,18 +5,18 @@ clear;
 clc
 
 %% Adding paths
-utilities = genpath('./utils');
+utilities = genpath('./../utils');
 addpath(utilities);
 
 %% Initialize process variables
 param.m = 1;
 param.k = 1;
-param.omega = 0; % if omega is a non-zero value, it's a forced system
-param.Amp = 0; %Amplitude for forced input
+param.omega = 1.57; % if omega is a non-zero value, it's a forced system
+param.Amp = 2; %Amplitude for forced input
 
 Ts = 0.01;
 % Initial conditions for the ODE solver
-tspan = 0:Ts:2; %[0 10];
+tspan = 0:Ts:25; %[0 10];
 z0 = [2 0];
 %% Use ODE solver to integrate the system through time
 springmass = @(t,z)springprocess(z,t,param);
@@ -29,8 +29,8 @@ wn = sqrt(variance).*randn(size(z(:,2))); % white noise with a given variance
 
 y = z(:,2) + wn;
 
-dataFolder = sprintf('./robotData/velocityMeasurement/');
-save(strcat(dataFolder,'measurement1.mat'),'t','y','variance');
+% dataFolder = sprintf('./robotData/velocityMeasurement/');
+% save(strcat(dataFolder,'measurement1.mat'),'t','y','variance');
 
 %% Initializing the filter params
 n = 2; %state dimension
