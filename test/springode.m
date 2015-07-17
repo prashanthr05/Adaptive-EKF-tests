@@ -16,8 +16,8 @@ param.Amp = 2; %Amplitude for forced input
 
 Ts = 0.01;
 % Initial conditions for the ODE solver
-tspan = 0:Ts:25; %[0 10];
-z0 = [2 0];
+tspan = 0:Ts:10; %[0 10];
+z0 = [0 0];
 %% Use ODE solver to integrate the system through time
 springmass = @(t,z)springprocess(z,t,param);
 %used as a reference for process model for the EKF
