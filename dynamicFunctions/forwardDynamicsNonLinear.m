@@ -1,6 +1,5 @@
 function xn = forwardDynamicsNonLinear( x0, model)
 dt = model.dtKalman;
-
 t_u = model.t;
 
 

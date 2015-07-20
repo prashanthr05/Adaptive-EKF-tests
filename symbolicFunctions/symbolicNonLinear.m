@@ -1,6 +1,7 @@
-clear all
+clear 
 close all
 clc
+
 
 syms x v X real
 syms m k k1 k2 real
@@ -11,7 +12,7 @@ X = [x v]';
 k = [k1 k2]';
 dx = X(2);
 dv = (-k(1)*X(1) - sign(X(1))*k(2)*X(1)*X(1) + Amplitude*sin(omega*t))/m;
-
+% dv = (-k(1)*X(1) - k(2)*X(1)*X(1)*X(1) + Amplitude*sin(omega*t))/m;
 dX = [dx dv]';
 
 f = dX;
