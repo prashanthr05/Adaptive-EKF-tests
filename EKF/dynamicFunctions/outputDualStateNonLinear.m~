@@ -1,5 +1,0 @@
-function h = outputDualStateNonLinear(What,Xhat,model)
-
-h = measurementModelNonLinear(Xhat(1),Xhat(2),Xhat(3),model.m,What(1),What(2),model.c);
-
-end
