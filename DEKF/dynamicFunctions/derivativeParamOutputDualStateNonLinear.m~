@@ -1,0 +1,10 @@
+function dh = derivativeOutputDualStateNonLinear(What Xhat, model)
+
+
+dh = paramoutputsDerivativesNonLinear(...
+    Xhat(1), Xhat(2) , Xhat(3) , ...
+    model.m, What(1),  What(2),model.c);
+
+
+
+end

@@ -1,0 +1,11 @@
+function A = derivativeForwardDynamicsDualStateNonLinear(What,Xhat, model)
+
+dt = model.dtKalman;
+
+df = dynamicsDerivativesNonLinear(...
+    Xhat(1) ,Xhat(2),Xhat(3) , ...
+    model.m, What(1),What(2),model.c);
+
+A = df.*dt + eye(size(df));
+
+end
