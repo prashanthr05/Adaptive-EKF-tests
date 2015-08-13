@@ -22,4 +22,17 @@ IMPORTANT NOTE 2: Also, Ensure that the parameters in both measurementGenerator 
 -utils/ consists of the EKF functions from the EKF/UKF toolbox used to run the filter.
 
 
+=============================================================================================================================================
 
+
+rigidBodyTests - We try to simulate rotating rigid body dynamics and estimate the orientation, velocity and wrenches acting on the body along with an adaptive parameter estimation for a constraint force acting on body due to compliant contact characterised by a rotational spring-damper system. 
+
+Mainly used for testing the Adaptive EKF methods on a rotating rigid body in presence of varying parameters.
+
+More or less has the same structure as the other folders.
+
+IMPORTANT NOTE 1 : Run the script runInvDyn.m in order to generate measurement data and respective ground truth for given rotation and velocity trajectories.
+IMPORTANT NOTE 1a : The process model correctness can be tested using testForward.m 
+IMPORTANT NOTE 2 : Run testEKF_completeLeg.m to run the corresponding filter. Be aware to play with the options available in the script.
+
+- 
